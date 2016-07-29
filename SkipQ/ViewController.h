@@ -10,7 +10,7 @@
 
 @interface ViewController : UIViewController<NSURLConnectionDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
-@property (nonatomic,retain) NSMutableData *receivedData;
+
 - (IBAction)getData:(id)sender;
 @end
 

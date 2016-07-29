@@ -7,6 +7,7 @@
 //
 
 #import "ProductDetailsController.h"
+#import "WalmartProductModel.h"
 
 @interface ProductDetailsController ()
 
@@ -16,30 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    _labelProductName.text = _productName;
-    //NSLog(@"%d", _rating);
-    //_labelRating.text = [_rating stringValue];
-    //_labelRating.text = [NSString stringWithFormat:@"%f", [_rating doubleValue]];
-    //_labelPrice.text = [_price stringValue];
-    //_labelTotalPrice.text = [_price stringValue];
-    _labelRating.text = [NSString stringWithFormat:@"%@/5",@([_rating doubleValue]).stringValue];
-    _labelPrice.text = [NSString stringWithFormat:@"$%@",@([_price doubleValue]).stringValue];
+    _labelProductName.text = _obj.productName;
+    _labelRating.text = [NSString stringWithFormat:@"%@/5",@([_obj.rating doubleValue]).stringValue];
+    _labelPrice.text = [NSString stringWithFormat:@"$%@",@([_obj.price doubleValue]).stringValue];
     _labelQuantity.text = @"1";
-    _labelTotalPrice.text = [NSString stringWithFormat:@"$%@",@([_price doubleValue]).stringValue];
-    
-    /*NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:_imageUrl]];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error == nil)
-        {
-        }*/
-    [_imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *imgURL = [NSURL URLWithString:_imageUrl];
+    _labelTotalPrice.text = [NSString stringWithFormat:@"$%@",@([_obj.price doubleValue]).stringValue];
+    //Downloading product image
+    [_obj.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *imgURL = [NSURL URLWithString:_obj.imageUrl];
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:imgURL] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!connectionError) {
-            _imageProduct.image = [[UIImage alloc] initWithData:data];
+            _imageProduct.image = [[UIImage alloc] initWithData:data];            
             // pass the img to your imageview
         }else{
             NSLog(@"%@",connectionError);

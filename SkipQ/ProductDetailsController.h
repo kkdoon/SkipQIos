@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WalmartProductModel.h"
 
 @interface ProductDetailsController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *labelProductName;
@@ -16,11 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIStepper *stepperQuantity;
 @property (weak, nonatomic) IBOutlet UILabel *labelTotalPrice;
 @property (weak, nonatomic) IBOutlet UIImageView *imageProduct;
-
-@property (copy) NSString *productName;
-@property (copy) NSNumber *price;
-@property (copy) NSNumber *rating;
-@property (copy) NSString *imageUrl;
+@property (nonatomic) WalmartProductModel *obj;
 
 - (IBAction)quantityValueChanged:(id)sender;
 

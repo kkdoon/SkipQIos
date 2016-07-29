@@ -7,3 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WalmartProductModel.h"
+
+@implementation WalmartProductModel {
+    // Private instance variables
+}
+
+- (id)initWithParams:(NSString *)productName :(NSNumber *)price :(NSNumber *)rating :(NSString *)imageUrl{
+    self = [super init];
+    if (self) {
+        _productName = [productName copy];
+        _price = [price copy];
+        _rating = [rating copy];
+        _imageUrl = [imageUrl copy];
+    }
+    return self;
+}
+
+@end

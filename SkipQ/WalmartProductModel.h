@@ -8,9 +8,10 @@
 @interface WalmartProductModel: NSObject{
 }
 
-@property (copy) NSString *productName;
-@property (copy) NSNumber *price;
-@property (copy) NSNumber *rating;
-@property (copy) NSString *imageUrl;
+@property (nonatomic) NSString *productName;
+@property (nonatomic) NSNumber *price;
+@property (nonatomic) NSNumber *rating;
+@property (nonatomic) NSString *imageUrl;
 
+ -(id)initWithParams:(NSString *)productName :(NSNumber *)price :(NSNumber *)rating :(NSString *)imageUrl;
 @end
