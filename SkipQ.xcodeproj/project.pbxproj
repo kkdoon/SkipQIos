@@ -11,10 +11,12 @@
 		BA4C39DD1D49F7D900A527E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C39DC1D49F7D900A527E7 /* AppDelegate.m */; };
 		BA4C39E01D49F7D900A527E7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C39DF1D49F7D900A527E7 /* ViewController.m */; };
 		BA4C39E31D49F7D900A527E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA4C39E11D49F7D900A527E7 /* Main.storyboard */; };
-		BA4C39E51D49F7D900A527E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4C39E41D49F7D900A527E7 /* Assets.xcassets */; };
 		BA4C39E81D49F7D900A527E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA4C39E61D49F7D900A527E7 /* LaunchScreen.storyboard */; };
 		BA4C39F31D49F7D900A527E7 /* SkipQTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C39F21D49F7D900A527E7 /* SkipQTests.m */; };
 		BA4C39FE1D49F7DA00A527E7 /* SkipQUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C39FD1D49F7DA00A527E7 /* SkipQUITests.m */; };
+		BA4C3A0D1D49FD7200A527E7 /* ProductDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A0C1D49FD7200A527E7 /* ProductDetailsController.m */; };
+		BA4C3A101D4B2A5800A527E7 /* WalmartProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A0F1D4B2A5800A527E7 /* WalmartProductModel.m */; };
+		BA4C3A141D4B461800A527E7 /* Logo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4C3A131D4B461800A527E7 /* Logo.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +44,6 @@
 		BA4C39DE1D49F7D900A527E7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BA4C39DF1D49F7D900A527E7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BA4C39E21D49F7D900A527E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BA4C39E41D49F7D900A527E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA4C39E71D49F7D900A527E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA4C39E91D49F7D900A527E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA4C39EE1D49F7D900A527E7 /* SkipQTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkipQTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +52,11 @@
 		BA4C39F91D49F7D900A527E7 /* SkipQUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkipQUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4C39FD1D49F7DA00A527E7 /* SkipQUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkipQUITests.m; sourceTree = "<group>"; };
 		BA4C39FF1D49F7DA00A527E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA4C3A0B1D49FD7200A527E7 /* ProductDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailsController.h; sourceTree = "<group>"; };
+		BA4C3A0C1D49FD7200A527E7 /* ProductDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailsController.m; sourceTree = "<group>"; };
+		BA4C3A0E1D4B295100A527E7 /* WalmartProductModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalmartProductModel.h; sourceTree = "<group>"; };
+		BA4C3A0F1D4B2A5800A527E7 /* WalmartProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalmartProductModel.m; sourceTree = "<group>"; };
+		BA4C3A131D4B461800A527E7 /* Logo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Logo.xcassets; path = ../../docs/cmu/modules/sem3/MobileApp/Assignment/Team11_ProjectProposal/Logo.xcassets/Logo.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 		BA4C39CC1D49F7D900A527E7 = {
 			isa = PBXGroup;
 			children = (
+				BA4C3A131D4B461800A527E7 /* Logo.xcassets */,
 				BA4C39D71D49F7D900A527E7 /* SkipQ */,
 				BA4C39F11D49F7D900A527E7 /* SkipQTests */,
 				BA4C39FC1D49F7DA00A527E7 /* SkipQUITests */,
@@ -106,7 +113,10 @@
 				BA4C39DE1D49F7D900A527E7 /* ViewController.h */,
 				BA4C39DF1D49F7D900A527E7 /* ViewController.m */,
 				BA4C39E11D49F7D900A527E7 /* Main.storyboard */,
-				BA4C39E41D49F7D900A527E7 /* Assets.xcassets */,
+				BA4C3A0E1D4B295100A527E7 /* WalmartProductModel.h */,
+				BA4C3A0F1D4B2A5800A527E7 /* WalmartProductModel.m */,
+				BA4C3A0B1D49FD7200A527E7 /* ProductDetailsController.h */,
+				BA4C3A0C1D49FD7200A527E7 /* ProductDetailsController.m */,
 				BA4C39E61D49F7D900A527E7 /* LaunchScreen.storyboard */,
 				BA4C39E91D49F7D900A527E7 /* Info.plist */,
 				BA4C39D81D49F7D900A527E7 /* Supporting Files */,
@@ -243,8 +253,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA4C3A141D4B461800A527E7 /* Logo.xcassets in Resources */,
 				BA4C39E81D49F7D900A527E7 /* LaunchScreen.storyboard in Resources */,
-				BA4C39E51D49F7D900A527E7 /* Assets.xcassets in Resources */,
 				BA4C39E31D49F7D900A527E7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +280,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA4C3A101D4B2A5800A527E7 /* WalmartProductModel.m in Sources */,
+				BA4C3A0D1D49FD7200A527E7 /* ProductDetailsController.m in Sources */,
 				BA4C39E01D49F7D900A527E7 /* ViewController.m in Sources */,
 				BA4C39DD1D49F7D900A527E7 /* AppDelegate.m in Sources */,
 				BA4C39DA1D49F7D900A527E7 /* main.m in Sources */,
