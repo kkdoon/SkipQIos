@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BA4C39DA1D49F7D900A527E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C39D91D49F7D900A527E7 /* main.m */; };
 		BA4C39DD1D49F7D900A527E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C39DC1D49F7D900A527E7 /* AppDelegate.m */; };
-		BA4C39E01D49F7D900A527E7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C39DF1D49F7D900A527E7 /* ViewController.m */; };
 		BA4C39E31D49F7D900A527E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA4C39E11D49F7D900A527E7 /* Main.storyboard */; };
 		BA4C39E81D49F7D900A527E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA4C39E61D49F7D900A527E7 /* LaunchScreen.storyboard */; };
 		BA4C39F31D49F7D900A527E7 /* SkipQTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C39F21D49F7D900A527E7 /* SkipQTests.m */; };
@@ -17,6 +16,11 @@
 		BA4C3A0D1D49FD7200A527E7 /* ProductDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A0C1D49FD7200A527E7 /* ProductDetailsController.m */; };
 		BA4C3A101D4B2A5800A527E7 /* WalmartProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A0F1D4B2A5800A527E7 /* WalmartProductModel.m */; };
 		BA4C3A141D4B461800A527E7 /* Logo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4C3A131D4B461800A527E7 /* Logo.xcassets */; };
+		BA4C3A151D4C22DA00A527E7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C39DF1D49F7D900A527E7 /* ViewController.m */; };
+		BA4C3A181D4C327300A527E7 /* TrendingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A171D4C327300A527E7 /* TrendingListViewController.m */; };
+		BA4C3A1B1D4CA5ED00A527E7 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A1A1D4CA5ED00A527E7 /* ReviewViewController.m */; };
+		BA4C3A1D1D4CB0B500A527E7 /* ReviewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4C3A1C1D4CB0B500A527E7 /* ReviewTableCell.xib */; };
+		BA4C3A201D4CB28000A527E7 /* ReviewCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A1F1D4CB28000A527E7 /* ReviewCellViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,13 @@
 		BA4C3A0E1D4B295100A527E7 /* WalmartProductModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalmartProductModel.h; sourceTree = "<group>"; };
 		BA4C3A0F1D4B2A5800A527E7 /* WalmartProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalmartProductModel.m; sourceTree = "<group>"; };
 		BA4C3A131D4B461800A527E7 /* Logo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Logo.xcassets; path = ../../docs/cmu/modules/sem3/MobileApp/Assignment/Team11_ProjectProposal/Logo.xcassets/Logo.xcassets; sourceTree = "<group>"; };
+		BA4C3A161D4C327300A527E7 /* TrendingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendingListViewController.h; sourceTree = "<group>"; };
+		BA4C3A171D4C327300A527E7 /* TrendingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendingListViewController.m; sourceTree = "<group>"; };
+		BA4C3A191D4CA5ED00A527E7 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
+		BA4C3A1A1D4CA5ED00A527E7 /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
+		BA4C3A1C1D4CB0B500A527E7 /* ReviewTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewTableCell.xib; sourceTree = "<group>"; };
+		BA4C3A1E1D4CB28000A527E7 /* ReviewCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCellViewController.h; sourceTree = "<group>"; };
+		BA4C3A1F1D4CB28000A527E7 /* ReviewCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewCellViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,13 +124,20 @@
 				BA4C39DE1D49F7D900A527E7 /* ViewController.h */,
 				BA4C39DF1D49F7D900A527E7 /* ViewController.m */,
 				BA4C39E11D49F7D900A527E7 /* Main.storyboard */,
+				BA4C3A191D4CA5ED00A527E7 /* ReviewViewController.h */,
+				BA4C3A1A1D4CA5ED00A527E7 /* ReviewViewController.m */,
 				BA4C3A0E1D4B295100A527E7 /* WalmartProductModel.h */,
 				BA4C3A0F1D4B2A5800A527E7 /* WalmartProductModel.m */,
 				BA4C3A0B1D49FD7200A527E7 /* ProductDetailsController.h */,
 				BA4C3A0C1D49FD7200A527E7 /* ProductDetailsController.m */,
+				BA4C3A1C1D4CB0B500A527E7 /* ReviewTableCell.xib */,
+				BA4C3A1E1D4CB28000A527E7 /* ReviewCellViewController.h */,
+				BA4C3A1F1D4CB28000A527E7 /* ReviewCellViewController.m */,
 				BA4C39E61D49F7D900A527E7 /* LaunchScreen.storyboard */,
 				BA4C39E91D49F7D900A527E7 /* Info.plist */,
 				BA4C39D81D49F7D900A527E7 /* Supporting Files */,
+				BA4C3A161D4C327300A527E7 /* TrendingListViewController.h */,
+				BA4C3A171D4C327300A527E7 /* TrendingListViewController.m */,
 			);
 			path = SkipQ;
 			sourceTree = "<group>";
@@ -217,6 +235,7 @@
 				TargetAttributes = {
 					BA4C39D41D49F7D900A527E7 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = XMJDP322PC;
 					};
 					BA4C39ED1D49F7D900A527E7 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -255,6 +274,7 @@
 			files = (
 				BA4C3A141D4B461800A527E7 /* Logo.xcassets in Resources */,
 				BA4C39E81D49F7D900A527E7 /* LaunchScreen.storyboard in Resources */,
+				BA4C3A1D1D4CB0B500A527E7 /* ReviewTableCell.xib in Resources */,
 				BA4C39E31D49F7D900A527E7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,10 +301,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA4C3A101D4B2A5800A527E7 /* WalmartProductModel.m in Sources */,
+				BA4C3A181D4C327300A527E7 /* TrendingListViewController.m in Sources */,
 				BA4C3A0D1D49FD7200A527E7 /* ProductDetailsController.m in Sources */,
-				BA4C39E01D49F7D900A527E7 /* ViewController.m in Sources */,
 				BA4C39DD1D49F7D900A527E7 /* AppDelegate.m in Sources */,
 				BA4C39DA1D49F7D900A527E7 /* main.m in Sources */,
+				BA4C3A151D4C22DA00A527E7 /* ViewController.m in Sources */,
+				BA4C3A201D4CB28000A527E7 /* ReviewCellViewController.m in Sources */,
+				BA4C3A1B1D4CA5ED00A527E7 /* ReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,10 +450,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SkipQ/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.ios.SkipQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -438,10 +464,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SkipQ/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.ios.SkipQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

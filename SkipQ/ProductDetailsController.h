@@ -20,5 +20,6 @@
 @property (nonatomic) WalmartProductModel *obj;
 
 - (IBAction)quantityValueChanged:(id)sender;
+- (IBAction)reviewCart:(id)sender;
 
 @end

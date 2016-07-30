@@ -24,4 +24,16 @@
     return self;
 }
 
+- (id)initWithParams:(NSString *)productName :(NSNumber *)price :(NSNumber *)msrp :(NSNumber *)rating :(NSString *)imageUrl{
+    self = [super init];
+    if (self) {
+        _productName = [productName copy];
+        _price = [price copy];
+        _msrp = [msrp copy];
+        _rating = [rating copy];
+        _imageUrl = [imageUrl copy];
+    }
+    return self;
+}
+
 @end

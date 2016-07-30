@@ -8,12 +8,14 @@
 
 #import "ProductDetailsController.h"
 #import "WalmartProductModel.h"
+#import "ReviewViewController.h"
 
 @interface ProductDetailsController ()
 
 @end
 
 @implementation ProductDetailsController
+NSMutableArray *productList;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +24,7 @@
     _labelPrice.text = [NSString stringWithFormat:@"$%@",@([_obj.price doubleValue]).stringValue];
     _labelQuantity.text = @"1";
     _labelTotalPrice.text = [NSString stringWithFormat:@"$%@",@([_obj.price doubleValue]).stringValue];
+    
     //Downloading product image
     [_obj.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *imgURL = [NSURL URLWithString:_obj.imageUrl];
@@ -40,16 +43,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)quantityValueChanged:(id)sender {
     //_labelQuantity.text = [NSString stringWithFormat:@"%f", _stepperQuantity.value];
     double price = [[[_labelPrice.text componentsSeparatedByString:@"$"] objectAtIndex:1] doubleValue];
@@ -58,4 +51,24 @@
     _labelQuantity.text = @(quantity).stringValue;
     _labelTotalPrice.text = [NSString stringWithFormat:@"$%@", @(totalPrice).stringValue];
 }
+
+- (IBAction)reviewCart:(id)sender {
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterNoStyle;
+    NSNumber *quantity = [f numberFromString:_labelQuantity.text];
+    WalmartProductModel *model = [[WalmartProductModel alloc] initWithParams:_obj.productName:_obj.price:quantity:_obj.imageUrl];
+    productList = [NSMutableArray arrayWithObjects: nil];
+    [productList addObject:model];
+    [self performSegueWithIdentifier:@"reviewCart" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"reviewCart"]) {
+        ReviewViewController *destViewController = segue.destinationViewController;
+        destViewController.productList = productList;
+        NSLog(@"%s","Sent!");
+    }
+}
+
+
 @end
