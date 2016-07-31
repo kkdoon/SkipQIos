@@ -21,6 +21,12 @@
 		BA4C3A1B1D4CA5ED00A527E7 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A1A1D4CA5ED00A527E7 /* ReviewViewController.m */; };
 		BA4C3A1D1D4CB0B500A527E7 /* ReviewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4C3A1C1D4CB0B500A527E7 /* ReviewTableCell.xib */; };
 		BA4C3A201D4CB28000A527E7 /* ReviewCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A1F1D4CB28000A527E7 /* ReviewCellViewController.m */; };
+		BA4C3A231D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A211D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodeld */; };
+		BA4C3A291D4DA4E500A527E7 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A281D4DA4E500A527E7 /* ConfirmViewController.m */; };
+		BA4C3A2F1D4DE00200A527E7 /* ScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A2E1D4DE00200A527E7 /* ScanController.m */; };
+		BA4C3A361D4EAA9500A527E7 /* ESSBeaconScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A311D4EAA9500A527E7 /* ESSBeaconScanner.m */; };
+		BA4C3A371D4EAA9500A527E7 /* ESSEddyStone.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A331D4EAA9500A527E7 /* ESSEddyStone.m */; };
+		BA4C3A381D4EAA9500A527E7 /* ESSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A351D4EAA9500A527E7 /* ESSTimer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +74,17 @@
 		BA4C3A1C1D4CB0B500A527E7 /* ReviewTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewTableCell.xib; sourceTree = "<group>"; };
 		BA4C3A1E1D4CB28000A527E7 /* ReviewCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCellViewController.h; sourceTree = "<group>"; };
 		BA4C3A1F1D4CB28000A527E7 /* ReviewCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewCellViewController.m; sourceTree = "<group>"; };
+		BA4C3A221D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CheckoutProductModel.xcdatamodel; sourceTree = "<group>"; };
+		BA4C3A271D4DA4E500A527E7 /* ConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmViewController.h; sourceTree = "<group>"; };
+		BA4C3A281D4DA4E500A527E7 /* ConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
+		BA4C3A2D1D4DDEF600A527E7 /* ScanController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanController.h; sourceTree = "<group>"; };
+		BA4C3A2E1D4DE00200A527E7 /* ScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanController.m; sourceTree = "<group>"; };
+		BA4C3A301D4EAA9500A527E7 /* ESSBeaconScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSBeaconScanner.h; sourceTree = "<group>"; };
+		BA4C3A311D4EAA9500A527E7 /* ESSBeaconScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSBeaconScanner.m; sourceTree = "<group>"; };
+		BA4C3A321D4EAA9500A527E7 /* ESSEddyStone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSEddyStone.h; sourceTree = "<group>"; };
+		BA4C3A331D4EAA9500A527E7 /* ESSEddyStone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSEddyStone.m; sourceTree = "<group>"; };
+		BA4C3A341D4EAA9500A527E7 /* ESSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSTimer.h; sourceTree = "<group>"; };
+		BA4C3A351D4EAA9500A527E7 /* ESSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSTimer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +115,7 @@
 		BA4C39CC1D49F7D900A527E7 = {
 			isa = PBXGroup;
 			children = (
+				BA4C3A211D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodeld */,
 				BA4C3A131D4B461800A527E7 /* Logo.xcassets */,
 				BA4C39D71D49F7D900A527E7 /* SkipQ */,
 				BA4C39F11D49F7D900A527E7 /* SkipQTests */,
@@ -119,11 +137,19 @@
 		BA4C39D71D49F7D900A527E7 /* SkipQ */ = {
 			isa = PBXGroup;
 			children = (
+				BA4C3A301D4EAA9500A527E7 /* ESSBeaconScanner.h */,
+				BA4C3A311D4EAA9500A527E7 /* ESSBeaconScanner.m */,
+				BA4C3A321D4EAA9500A527E7 /* ESSEddyStone.h */,
+				BA4C3A331D4EAA9500A527E7 /* ESSEddyStone.m */,
+				BA4C3A341D4EAA9500A527E7 /* ESSTimer.h */,
+				BA4C3A351D4EAA9500A527E7 /* ESSTimer.m */,
 				BA4C39DB1D49F7D900A527E7 /* AppDelegate.h */,
 				BA4C39DC1D49F7D900A527E7 /* AppDelegate.m */,
 				BA4C39DE1D49F7D900A527E7 /* ViewController.h */,
 				BA4C39DF1D49F7D900A527E7 /* ViewController.m */,
 				BA4C39E11D49F7D900A527E7 /* Main.storyboard */,
+				BA4C3A271D4DA4E500A527E7 /* ConfirmViewController.h */,
+				BA4C3A281D4DA4E500A527E7 /* ConfirmViewController.m */,
 				BA4C3A191D4CA5ED00A527E7 /* ReviewViewController.h */,
 				BA4C3A1A1D4CA5ED00A527E7 /* ReviewViewController.m */,
 				BA4C3A0E1D4B295100A527E7 /* WalmartProductModel.h */,
@@ -138,6 +164,8 @@
 				BA4C39D81D49F7D900A527E7 /* Supporting Files */,
 				BA4C3A161D4C327300A527E7 /* TrendingListViewController.h */,
 				BA4C3A171D4C327300A527E7 /* TrendingListViewController.m */,
+				BA4C3A2D1D4DDEF600A527E7 /* ScanController.h */,
+				BA4C3A2E1D4DE00200A527E7 /* ScanController.m */,
 			);
 			path = SkipQ;
 			sourceTree = "<group>";
@@ -300,13 +328,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA4C3A231D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodeld in Sources */,
+				BA4C3A381D4EAA9500A527E7 /* ESSTimer.m in Sources */,
+				BA4C3A291D4DA4E500A527E7 /* ConfirmViewController.m in Sources */,
 				BA4C3A101D4B2A5800A527E7 /* WalmartProductModel.m in Sources */,
+				BA4C3A2F1D4DE00200A527E7 /* ScanController.m in Sources */,
 				BA4C3A181D4C327300A527E7 /* TrendingListViewController.m in Sources */,
 				BA4C3A0D1D49FD7200A527E7 /* ProductDetailsController.m in Sources */,
 				BA4C39DD1D49F7D900A527E7 /* AppDelegate.m in Sources */,
 				BA4C39DA1D49F7D900A527E7 /* main.m in Sources */,
 				BA4C3A151D4C22DA00A527E7 /* ViewController.m in Sources */,
 				BA4C3A201D4CB28000A527E7 /* ReviewCellViewController.m in Sources */,
+				BA4C3A361D4EAA9500A527E7 /* ESSBeaconScanner.m in Sources */,
+				BA4C3A371D4EAA9500A527E7 /* ESSEddyStone.m in Sources */,
 				BA4C3A1B1D4CA5ED00A527E7 /* ReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,6 +573,7 @@
 				BA4C3A041D49F7DA00A527E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA4C3A051D49F7DA00A527E7 /* Build configuration list for PBXNativeTarget "SkipQTests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +582,7 @@
 				BA4C3A071D49F7DA00A527E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA4C3A081D49F7DA00A527E7 /* Build configuration list for PBXNativeTarget "SkipQUITests" */ = {
 			isa = XCConfigurationList;
@@ -555,8 +591,22 @@
 				BA4C3A0A1D49F7DA00A527E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BA4C3A211D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BA4C3A221D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodel */,
+			);
+			currentVersion = BA4C3A221D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodel */;
+			path = CheckoutProductModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BA4C39CD1D49F7D900A527E7 /* Project object */;
 }

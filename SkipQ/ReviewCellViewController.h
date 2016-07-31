@@ -14,8 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;
 @property (weak, nonatomic) IBOutlet UILabel *labelQuantity;
 @property (weak, nonatomic) IBOutlet UILabel *labelTotalPrice;
-@property (weak, nonatomic) IBOutlet UIStepper *stepperQuantity;
+//@property (weak, nonatomic) IBOutlet UIStepper *stepperQuantity;
 
-- (IBAction)changeQuantity:(id)sender;
+//- (IBAction)changeQuantity:(id)sender;
 
 @end

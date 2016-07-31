@@ -14,12 +14,13 @@
 
 @implementation ReviewCellViewController
 
-- (IBAction)changeQuantity:(id)sender {
+/*- (IBAction)changeQuantity:(id)sender {
     double price = [[[_labelPrice.text componentsSeparatedByString:@"$"] objectAtIndex:1] doubleValue];
-    double quantity = _stepperQuantity.value;
-    double totalPrice = price * quantity;
-    _labelQuantity.text = @(quantity).stringValue;
-    _labelTotalPrice.text = [NSString stringWithFormat:@"$%@", @(totalPrice).stringValue];
-}
+    //double quantity = _stepperQuantity.value;
+    //double totalPrice = price * quantity;
+    //_labelQuantity.text = @(quantity).stringValue;
+    //_labelTotalPrice.text = [NSString stringWithFormat:@"$%@", @(totalPrice).stringValue];
+    NSLog(@"Pressed!");
+}*/
 
 @end

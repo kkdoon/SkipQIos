@@ -18,8 +18,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTotalPrice;
 @property (weak, nonatomic) IBOutlet UIImageView *imageProduct;
 @property (nonatomic) WalmartProductModel *obj;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingBar;
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
+@property (weak, nonatomic) IBOutlet UIButton *btnCart;
+@property (weak, nonatomic) IBOutlet UIButton *btnCompare;
+@property (weak, nonatomic) IBOutlet UIButton *btnAddCart;
 
 - (IBAction)quantityValueChanged:(id)sender;
+- (IBAction)addToCart:(id)sender;
 - (IBAction)reviewCart:(id)sender;
+- (IBAction)comparePrices:(id)sender;
 
 @end
