@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TrendingListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UILabel *labelDealsTtile;
 @property (weak, nonatomic) IBOutlet UITableView *dealsTable;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (weak, nonatomic) NSString *sectionName;
 - (IBAction)backButton:(id)sender;
 
 //@property(atomic, weak)NSMutableArray *trendingList;

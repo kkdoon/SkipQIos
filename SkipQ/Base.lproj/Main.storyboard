@@ -436,8 +436,8 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" identifier="fromTrendingToMain" id="iJL-sQ-IFy"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deals of Day: Electronics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOu-pS-g4F">
-                                <rect key="frame" x="38" y="47" width="244" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deals of the Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOu-pS-g4F">
+                                <rect key="frame" x="42" y="47" width="237" height="22"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -448,6 +448,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="dealsTable" destination="Hou-bJ-kC1" id="B8W-Dd-6go"/>
+                        <outlet property="labelDealsTtile" destination="ZOu-pS-g4F" id="qZi-Tv-Bab"/>
                         <outlet property="loadingIndicator" destination="fWb-dC-QhU" id="rKA-h4-ttw"/>
                         <segue destination="hqm-lE-0EU" kind="presentation" identifier="showProductInfoFromTrending" id="Qoy-FF-MHX"/>
                     </connections>
@@ -494,8 +495,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1hT-7v-Wtu"/>
-        <segue reference="9CH-aW-78v"/>
-        <segue reference="bYJ-I2-UAJ"/>
-        <segue reference="XWF-vr-zGi"/>
+        <segue reference="Qoy-FF-MHX"/>
+        <segue reference="8Oy-Aq-Gb7"/>
+        <segue reference="iJL-sQ-IFy"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,6 +11,7 @@
 #import "WalmartProductModel.h"
 #import "ReviewViewController.h"
 #import "BeaconManager.h"
+#import "TrendingListViewController.h"
 
 @interface ProductDetailsController ()
 
@@ -373,6 +374,10 @@ NSMutableArray *productList;
     }else if ([segue.identifier isEqualToString:@"fromProductToMain"]) {
         
     }*/
+    if ([segue.identifier isEqualToString:@"fromProductToTrending"]) {
+        TrendingListViewController *destView = segue.destinationViewController;
+        destView.sectionName = _sectionName;
+    }
 }
 
 -(IBAction)backToPrevScreenSugue:(UIStoryboardSegue *)segue{

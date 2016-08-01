@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelDeal;
 @property (nonatomic) WalmartProductModel *obj;
 @property (nonatomic) Boolean isDeal;
+@property (nonatomic) NSString *sectionName;
 @property (nonatomic) double savings;
 @property (nonatomic) NSString *upcCode;
 

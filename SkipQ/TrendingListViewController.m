@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _labelDealsTtile.text = [NSString stringWithFormat:@"Deals of the Day: %@", _sectionName];
     _dealsTable.hidden = true;
     _loadingIndicator.hidden = false;
     [_loadingIndicator startAnimating];
@@ -42,7 +43,8 @@
             for (NSDictionary* item in itemList)
             {
                 NSString *category = item[@"categoryPath"];
-                if(category != nil && [category containsString:@"Electronics"]){
+                //if(category != nil && [category containsString:@"Electronics"]){
+                if(category != nil && [category containsString:_sectionName]){
                     row = [[WalmartProductModel alloc] initWithParams:item[@"name"]:item[@"salePrice"]:item[@"msrp"]:item[@"customerRating"]:item[@"largeImage"]];
                     row.upcCode = item[@"upc"];
                     row.productUrl = item[@"productUrl"];
@@ -141,6 +143,7 @@
         destViewController.isDeal = true;
         destViewController.savings = selectedSavings;
         destViewController.upcCode = selectedModel.upcCode;
+        destViewController.sectionName = _sectionName;
         NSLog(@"Segue completed");
     }
 }

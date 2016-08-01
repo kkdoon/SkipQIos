@@ -26,6 +26,11 @@
   NSMutableArray *trendingList;
 }
 static BOOL *isBeaconFound;
+static NSString *ConfiguredBeaconNamespaceID = @"ca2393587ea5470e81b8";
+static NSString *ConfiguredBeaconInstanceID = @"000000000063";
+static NSString *SelectedUrlContains = @"team11.com";
+static NSString *SelectedUrl;
+static NSString *SectionName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -137,12 +142,26 @@ static BOOL *isBeaconFound;
         ESSBeaconInfo *b= (ESSBeaconInfo *) beaconInfo;
         double dist = [self calculateDistance:[b.txPower intValue]:[b.RSSI doubleValue]];
         NSLog(@"Distance :%@", @(dist).stringValue);
-        if(dist <= 5){
+        NSString *beaconNamespace = [NSString stringWithFormat:@"%@", b.beaconID];
+        NSRange range = [beaconNamespace rangeOfString:@"<"];
+        NSString *namespace = [[beaconNamespace substringFromIndex:range.location +1] substringToIndex:22];
+        NSString *instanceBeacon = [beaconNamespace substringFromIndex:22];
+        instanceBeacon = [[instanceBeacon substringFromIndex:range.location +1]stringByReplacingOccurrencesOfString:@" " withString:@""];
+        instanceBeacon = [instanceBeacon substringToIndex:[instanceBeacon length] -1];
+        namespace = [namespace stringByReplacingOccurrencesOfString:@" " withString:@""];
+        NSLog(@"Beacon Str:%@", namespace);
+        NSLog(@"Beacon Instance:%@", instanceBeacon);
+        
+        if(dist <= 5 && [namespace isEqualToString:ConfiguredBeaconNamespaceID] && [instanceBeacon isEqualToString:ConfiguredBeaconInstanceID] && SelectedUrl != nil && [SelectedUrl containsString:SelectedUrlContains]){
             if (self.isViewLoaded && self.view.window) {
-            NSLog(@"View Controller Found!!!!!");
+            NSLog(@"View Controller Beacon Found!!!!!");
+            //NSLog(@"Beacon URL:%@", SelectedUrl);
+            SectionName = [[[SelectedUrl componentsSeparatedByString:@"/"] objectAtIndex: 3] lowercaseString];
+            NSString *upper = [[NSString stringWithFormat:@"%c", [SectionName characterAtIndex:0]] uppercaseString];
+            SectionName =[upper stringByAppendingString:[SectionName substringFromIndex:1]];
             UIAlertController * alert=   [UIAlertController
                                           alertControllerWithTitle:@"Deal of Day"
-                                          message:@"Are you interested in exploring deals of day in Electronics section?"
+                                          message:[NSString stringWithFormat:@"Are you interested in exploring deals of day in %@ section?", SectionName]
                                           preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* ok = [UIAlertAction
                                  actionWithTitle:@"OK"
@@ -171,6 +190,8 @@ static BOOL *isBeaconFound;
             isBeaconFound = TRUE;
             [_scanner stopScanning];
             _scanner = nil;
+        }else{
+             NSLog(@"url: %@, distance: %@", SelectedUrl, @(dist).stringValue);
         }
         //[NSThread sleepForTimeInterval:5.0f];
     });
@@ -179,8 +200,8 @@ static BOOL *isBeaconFound;
 - (void)beaconScanner:(ESSBeaconScanner *)scanner didFindURL:(NSURL *)url {
     dispatch_async(dispatch_get_main_queue(), ^{
         NSLog(@"I Saw a URL!: %@", url);
-        //[NSThread sleepForTimeInterval:5.0f];
-    });
+            });
+    SelectedUrl = [NSString stringWithFormat:@"%@", url];
 }
 
 -(double) calculateDistance:(int)txPower:(double)rssi {
@@ -195,6 +216,8 @@ static BOOL *isBeaconFound;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"mainToTrendingPage"]) {
         TrendingListViewController *destViewController = segue.destinationViewController;
+        destViewController.sectionName = SectionName;
+        NSLog(@"section: %@", SectionName);
     }
 }
 @end
