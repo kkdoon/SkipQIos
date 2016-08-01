@@ -17,5 +17,6 @@
 //@property(atomic, weak)NSMutableArray *productList;
 @property (strong) NSMutableArray *productList;
 - (IBAction)clearCart:(id)sender;
+- (IBAction)checkout:(id)sender;
 
 @end

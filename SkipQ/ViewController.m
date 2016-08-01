@@ -152,13 +152,13 @@ static NSString *SectionName;
         NSLog(@"Beacon Str:%@", namespace);
         NSLog(@"Beacon Instance:%@", instanceBeacon);
         
-        if(dist <= 5 && [namespace isEqualToString:ConfiguredBeaconNamespaceID] && [instanceBeacon isEqualToString:ConfiguredBeaconInstanceID] && SelectedUrl != nil && [SelectedUrl containsString:SelectedUrlContains]){
-            if (self.isViewLoaded && self.view.window) {
-            NSLog(@"View Controller Beacon Found!!!!!");
-            //NSLog(@"Beacon URL:%@", SelectedUrl);
+        if(dist <= 15 && [namespace isEqualToString:ConfiguredBeaconNamespaceID] && [instanceBeacon isEqualToString:ConfiguredBeaconInstanceID] && SelectedUrl != nil && [SelectedUrl containsString:SelectedUrlContains]){
             SectionName = [[[SelectedUrl componentsSeparatedByString:@"/"] objectAtIndex: 3] lowercaseString];
             NSString *upper = [[NSString stringWithFormat:@"%c", [SectionName characterAtIndex:0]] uppercaseString];
             SectionName =[upper stringByAppendingString:[SectionName substringFromIndex:1]];
+            if (self.isViewLoaded && self.view.window) {
+            NSLog(@"View Controller Beacon Found!!!!!");
+            //NSLog(@"Beacon URL:%@", SelectedUrl);
             UIAlertController * alert=   [UIAlertController
                                           alertControllerWithTitle:@"Deal of Day"
                                           message:[NSString stringWithFormat:@"Are you interested in exploring deals of day in %@ section?", SectionName]
@@ -186,6 +186,8 @@ static NSString *SectionName;
             [self presentViewController:alert animated:YES completion:nil];
             }
             BeaconManager *manager = [BeaconManager getInstance];
+            [BeaconManager setSectionName:SectionName];
+            NSLog(@"section name: %@", SectionName);
             [manager invokeBeaconFound];
             isBeaconFound = TRUE;
             [_scanner stopScanning];

@@ -44,6 +44,18 @@
     }
     _labelSubtotal.text = [NSString stringWithFormat:@"$%@", @(totalPrice).stringValue];
     _labelTotalPrice.text = [NSString stringWithFormat:@"$%@", @(totalPrice).stringValue];
+    
+    NSError *error = nil;
+    while([productList count] != 0){
+        for(int i = 0; i < [productList count]; i++){
+            [managedObjectContext deleteObject:[productList objectAtIndex:i]];
+            if (![managedObjectContext save:&error]) {
+                NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+                return;
+            }
+            [productList removeObjectAtIndex:i];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

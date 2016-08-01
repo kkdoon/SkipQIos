@@ -12,6 +12,7 @@
 -(void)initWithDelegate:(id <BeaconCallback>) delegate;
 - (void)invokeBeaconFound;
 +(BeaconManager *)getInstance;
-
++(NSString *)getSectionName;
++(void)setSectionName:(NSString *)section;
 @end
 

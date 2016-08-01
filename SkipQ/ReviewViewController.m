@@ -11,6 +11,7 @@
 #import "WalmartProductModel.h"
 #import "ReviewCellViewController.h"
 #import "BeaconManager.h"
+#import "TrendingListViewController.h"
 
 @interface ReviewViewController ()
 
@@ -221,19 +222,29 @@ ReviewCellViewController *selectedCell;
     return 125;
 }
 
-/*
-#pragma mark - Navigation
+
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"reviewToTrendingPage"]) {
+        TrendingListViewController *destView = segue.destinationViewController;
+        destView.sectionName = [BeaconManager getSectionName];
+    }
 }
-*/
+
 
 - (IBAction)clearCart:(id)sender {
+    [self clearCartLogic];
+}
+
+- (IBAction)checkout:(id)sender {
+    //[self clearCartLogic];
+}
+
+-(void)clearCartLogic{
     NSManagedObjectContext *context = [self managedObjectContext];
     NSError *error = nil;
+    while([_productList count] != 0){
     for(int i = 0; i < [_productList count]; i++){
         [context deleteObject:[_productList objectAtIndex:i]];
         if (![context save:&error]) {
@@ -244,6 +255,8 @@ ReviewCellViewController *selectedCell;
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         [_cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
+    }
     [self updatePriceToolbar];
 }
+
 @end

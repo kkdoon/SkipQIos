@@ -85,8 +85,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSq-Xp-Qk5">
                                 <rect key="frame" x="73" y="515" width="177" height="33"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Buy with Apple Pay"/>
+                                <state key="normal" title="Checkout"/>
                                 <connections>
+                                    <action selector="checkout:" destination="ccb-HV-7U2" eventType="touchUpInside" id="zQu-xr-qZJ"/>
                                     <segue destination="Gh6-dY-at3" kind="presentation" identifier="confirmPage" id="Pfd-TW-TRU"/>
                                 </connections>
                             </button>
@@ -168,12 +169,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thank You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioD-AN-tw8">
-                                <rect key="frame" x="147" y="28" width="81" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8K9-9m-kUm">
                                 <rect key="frame" x="12" y="23" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
@@ -230,13 +225,19 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4T-rE-4WF">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4T-rE-4WF">
                                 <rect key="frame" x="90" y="492" width="141" height="29"/>
                                 <state key="normal" title="Download Receipt"/>
                                 <connections>
                                     <action selector="downloadReceipt:" destination="Gh6-dY-at3" eventType="touchUpInside" id="iUK-Di-7Fz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thank You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioD-AN-tw8">
+                                <rect key="frame" x="120" y="37" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -494,9 +495,9 @@
         <image name="MainScreen" width="313" height="313"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1hT-7v-Wtu"/>
-        <segue reference="Qoy-FF-MHX"/>
+        <segue reference="V3A-6i-jW8"/>
+        <segue reference="SS1-Sa-SXF"/>
         <segue reference="8Oy-Aq-Gb7"/>
-        <segue reference="iJL-sQ-IFy"/>
+        <segue reference="Qoy-FF-MHX"/>
     </inferredMetricsTieBreakers>
 </document>

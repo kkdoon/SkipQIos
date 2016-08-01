@@ -376,7 +376,8 @@ NSMutableArray *productList;
     }*/
     if ([segue.identifier isEqualToString:@"fromProductToTrending"]) {
         TrendingListViewController *destView = segue.destinationViewController;
-        destView.sectionName = _sectionName;
+        destView.sectionName = [BeaconManager getSectionName];
+        NSLog(@"section name: %@", [BeaconManager getSectionName]);
     }
 }
 

@@ -17,6 +17,8 @@
 @implementation BeaconManager
 
 static BeaconManager *instance;
+static NSString *sectionName;
+
 NSMutableArray *callbackObj;
 
 /*- (id)init
@@ -37,6 +39,7 @@ NSMutableArray *callbackObj;
     //[self init];
     if(instance == nil){
         instance = [[BeaconManager alloc] init];
+        sectionName = [[NSString alloc] init];
     }
     return instance;
 }
@@ -59,6 +62,17 @@ NSMutableArray *callbackObj;
         [obj beaconFound];        
     }
 }
+
++(NSString *)getSectionName{
+    return sectionName;
+}
+
++(void)setSectionName:(NSString *)section{
+    NSLog(@"section name manager1: %@", section);
+    sectionName = [section copy];
+    NSLog(@"section name manager: %@", sectionName);
+}
+
 
 
 @end
