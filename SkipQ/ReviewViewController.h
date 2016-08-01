@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BeaconCallback.h"
 
-@interface ReviewViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface ReviewViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, BeaconCallback>
 @property (weak, nonatomic) IBOutlet UITableView *cartTableView;
 @property (weak, nonatomic) IBOutlet UILabel *labelItemCount;
 @property (weak, nonatomic) IBOutlet UILabel *labelTotalPrice;

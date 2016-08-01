@@ -10,6 +10,7 @@
 #import "ReviewViewController.h"
 #import "WalmartProductModel.h"
 #import "ReviewCellViewController.h"
+#import "BeaconManager.h"
 
 @interface ReviewViewController ()
 
@@ -28,9 +29,43 @@ ReviewCellViewController *selectedCell;
     return context;
 }
 
+- (void)beaconFound{
+    if (self.isViewLoaded && self.view.window) {
+        NSLog(@"ProductDetailsController: Beacon detected!");
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Deal of Day"
+                                      message:@"Are you interested in exploring deals of day in Electronics section?"
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 [self performSegueWithIdentifier:@"reviewToTrendingPage" sender:self];
+                                 NSLog(@"Done");
+                             }];
+        UIAlertAction* cancel = [UIAlertAction
+                                 actionWithTitle:@"Cancel"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     NSLog(@"No");
+                                     
+                                 }];
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //Register for beacon callbacks
+    BeaconManager *manager = [BeaconManager getInstance];
+    [manager initWithDelegate:self];
     // Fetch the devices from persistent data store
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"CheckoutProduct"];
