@@ -24,9 +24,14 @@
 		BA4C3A231D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A211D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodeld */; };
 		BA4C3A291D4DA4E500A527E7 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A281D4DA4E500A527E7 /* ConfirmViewController.m */; };
 		BA4C3A2F1D4DE00200A527E7 /* ScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A2E1D4DE00200A527E7 /* ScanController.m */; };
-		BA4C3A361D4EAA9500A527E7 /* ESSBeaconScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A311D4EAA9500A527E7 /* ESSBeaconScanner.m */; };
-		BA4C3A371D4EAA9500A527E7 /* ESSEddyStone.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A331D4EAA9500A527E7 /* ESSEddyStone.m */; };
-		BA4C3A381D4EAA9500A527E7 /* ESSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A351D4EAA9500A527E7 /* ESSTimer.m */; };
+		BA4C3A3B1D4EB1D900A527E7 /* BeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C3A3A1D4EB1D900A527E7 /* BeaconManager.m */; };
+		BAB16C461D4F026A0014E8B0 /* ESSBeaconScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB16C421D4F026A0014E8B0 /* ESSBeaconScanner.m */; };
+		BAB16C471D4F026A0014E8B0 /* ESSEddyStone.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB16C441D4F026A0014E8B0 /* ESSEddyStone.m */; };
+		BAB16C481D4F026A0014E8B0 /* ESSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB16C451D4F026A0014E8B0 /* ESSTimer.m */; };
+		BAB16C4D1D4F028B0014E8B0 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB16C491D4F028B0014E8B0 /* FBSDKLoginKit.framework */; };
+		BAB16C4E1D4F028B0014E8B0 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB16C4A1D4F028B0014E8B0 /* FBSDKCoreKit.framework */; };
+		BAB16C4F1D4F028B0014E8B0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB16C4B1D4F028B0014E8B0 /* Bolts.framework */; };
+		BAB16C501D4F028B0014E8B0 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB16C4C1D4F028B0014E8B0 /* FBSDKShareKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,12 +84,19 @@
 		BA4C3A281D4DA4E500A527E7 /* ConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
 		BA4C3A2D1D4DDEF600A527E7 /* ScanController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanController.h; sourceTree = "<group>"; };
 		BA4C3A2E1D4DE00200A527E7 /* ScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanController.m; sourceTree = "<group>"; };
-		BA4C3A301D4EAA9500A527E7 /* ESSBeaconScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSBeaconScanner.h; sourceTree = "<group>"; };
-		BA4C3A311D4EAA9500A527E7 /* ESSBeaconScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSBeaconScanner.m; sourceTree = "<group>"; };
-		BA4C3A321D4EAA9500A527E7 /* ESSEddyStone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSEddyStone.h; sourceTree = "<group>"; };
-		BA4C3A331D4EAA9500A527E7 /* ESSEddyStone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSEddyStone.m; sourceTree = "<group>"; };
-		BA4C3A341D4EAA9500A527E7 /* ESSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSTimer.h; sourceTree = "<group>"; };
-		BA4C3A351D4EAA9500A527E7 /* ESSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSTimer.m; sourceTree = "<group>"; };
+		BA4C3A391D4EB18E00A527E7 /* BeaconCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconCallback.h; sourceTree = "<group>"; };
+		BA4C3A3A1D4EB1D900A527E7 /* BeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconManager.m; sourceTree = "<group>"; };
+		BA4C3A3C1D4EB1E700A527E7 /* BeaconManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeaconManager.h; sourceTree = "<group>"; };
+		BAB16C401D4F026A0014E8B0 /* ESSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSTimer.h; sourceTree = "<group>"; };
+		BAB16C411D4F026A0014E8B0 /* ESSBeaconScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSBeaconScanner.h; sourceTree = "<group>"; };
+		BAB16C421D4F026A0014E8B0 /* ESSBeaconScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSBeaconScanner.m; sourceTree = "<group>"; };
+		BAB16C431D4F026A0014E8B0 /* ESSEddyStone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSEddyStone.h; sourceTree = "<group>"; };
+		BAB16C441D4F026A0014E8B0 /* ESSEddyStone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSEddyStone.m; sourceTree = "<group>"; };
+		BAB16C451D4F026A0014E8B0 /* ESSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSTimer.m; sourceTree = "<group>"; };
+		BAB16C491D4F028B0014E8B0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		BAB16C4A1D4F028B0014E8B0 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		BAB16C4B1D4F028B0014E8B0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		BAB16C4C1D4F028B0014E8B0 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +104,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAB16C501D4F028B0014E8B0 /* FBSDKShareKit.framework in Frameworks */,
+				BAB16C4F1D4F028B0014E8B0 /* Bolts.framework in Frameworks */,
+				BAB16C4D1D4F028B0014E8B0 /* FBSDKLoginKit.framework in Frameworks */,
+				BAB16C4E1D4F028B0014E8B0 /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +131,7 @@
 		BA4C39CC1D49F7D900A527E7 = {
 			isa = PBXGroup;
 			children = (
+				BAB16C2C1D4EFC2D0014E8B0 /* Frameworks */,
 				BA4C3A211D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodeld */,
 				BA4C3A131D4B461800A527E7 /* Logo.xcassets */,
 				BA4C39D71D49F7D900A527E7 /* SkipQ */,
@@ -137,13 +154,14 @@
 		BA4C39D71D49F7D900A527E7 /* SkipQ */ = {
 			isa = PBXGroup;
 			children = (
-				BA4C3A301D4EAA9500A527E7 /* ESSBeaconScanner.h */,
-				BA4C3A311D4EAA9500A527E7 /* ESSBeaconScanner.m */,
-				BA4C3A321D4EAA9500A527E7 /* ESSEddyStone.h */,
-				BA4C3A331D4EAA9500A527E7 /* ESSEddyStone.m */,
-				BA4C3A341D4EAA9500A527E7 /* ESSTimer.h */,
-				BA4C3A351D4EAA9500A527E7 /* ESSTimer.m */,
+				BAB16C401D4F026A0014E8B0 /* ESSTimer.h */,
+				BAB16C411D4F026A0014E8B0 /* ESSBeaconScanner.h */,
+				BAB16C421D4F026A0014E8B0 /* ESSBeaconScanner.m */,
+				BAB16C431D4F026A0014E8B0 /* ESSEddyStone.h */,
+				BAB16C441D4F026A0014E8B0 /* ESSEddyStone.m */,
+				BAB16C451D4F026A0014E8B0 /* ESSTimer.m */,
 				BA4C39DB1D49F7D900A527E7 /* AppDelegate.h */,
+				BA4C3A391D4EB18E00A527E7 /* BeaconCallback.h */,
 				BA4C39DC1D49F7D900A527E7 /* AppDelegate.m */,
 				BA4C39DE1D49F7D900A527E7 /* ViewController.h */,
 				BA4C39DF1D49F7D900A527E7 /* ViewController.m */,
@@ -166,6 +184,8 @@
 				BA4C3A171D4C327300A527E7 /* TrendingListViewController.m */,
 				BA4C3A2D1D4DDEF600A527E7 /* ScanController.h */,
 				BA4C3A2E1D4DE00200A527E7 /* ScanController.m */,
+				BA4C3A3A1D4EB1D900A527E7 /* BeaconManager.m */,
+				BA4C3A3C1D4EB1E700A527E7 /* BeaconManager.h */,
 			);
 			path = SkipQ;
 			sourceTree = "<group>";
@@ -194,6 +214,17 @@
 				BA4C39FF1D49F7DA00A527E7 /* Info.plist */,
 			);
 			path = SkipQUITests;
+			sourceTree = "<group>";
+		};
+		BAB16C2C1D4EFC2D0014E8B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAB16C491D4F028B0014E8B0 /* FBSDKLoginKit.framework */,
+				BAB16C4A1D4F028B0014E8B0 /* FBSDKCoreKit.framework */,
+				BAB16C4B1D4F028B0014E8B0 /* Bolts.framework */,
+				BAB16C4C1D4F028B0014E8B0 /* FBSDKShareKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +295,11 @@
 					BA4C39D41D49F7D900A527E7 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = XMJDP322PC;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					BA4C39ED1D49F7D900A527E7 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -329,18 +365,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA4C3A231D4D5AD200A527E7 /* CheckoutProductModel.xcdatamodeld in Sources */,
-				BA4C3A381D4EAA9500A527E7 /* ESSTimer.m in Sources */,
 				BA4C3A291D4DA4E500A527E7 /* ConfirmViewController.m in Sources */,
 				BA4C3A101D4B2A5800A527E7 /* WalmartProductModel.m in Sources */,
 				BA4C3A2F1D4DE00200A527E7 /* ScanController.m in Sources */,
 				BA4C3A181D4C327300A527E7 /* TrendingListViewController.m in Sources */,
+				BAB16C471D4F026A0014E8B0 /* ESSEddyStone.m in Sources */,
 				BA4C3A0D1D49FD7200A527E7 /* ProductDetailsController.m in Sources */,
 				BA4C39DD1D49F7D900A527E7 /* AppDelegate.m in Sources */,
 				BA4C39DA1D49F7D900A527E7 /* main.m in Sources */,
+				BA4C3A3B1D4EB1D900A527E7 /* BeaconManager.m in Sources */,
 				BA4C3A151D4C22DA00A527E7 /* ViewController.m in Sources */,
+				BAB16C461D4F026A0014E8B0 /* ESSBeaconScanner.m in Sources */,
+				BAB16C481D4F026A0014E8B0 /* ESSTimer.m in Sources */,
 				BA4C3A201D4CB28000A527E7 /* ReviewCellViewController.m in Sources */,
-				BA4C3A361D4EAA9500A527E7 /* ESSBeaconScanner.m in Sources */,
-				BA4C3A371D4EAA9500A527E7 /* ESSEddyStone.m in Sources */,
 				BA4C3A1B1D4CA5ED00A527E7 /* ReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,7 +523,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SkipQ/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.ios.SkipQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -500,7 +543,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SkipQ/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.ios.SkipQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";

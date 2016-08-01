@@ -11,9 +11,9 @@
 @interface ViewController : UIViewController<NSURLConnectionDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *labelUic;
 
--(void)showHttpErrorMsg;
-- (IBAction)showAlert:(id)sender;
-- (IBAction)getTrendingData:(id)sender;
-- (IBAction)getData:(id)sender;
+//-(void)showHttpErrorMsg;
+//- (IBAction)showAlert:(id)sender;
+//- (IBAction)getTrendingData:(id)sender;
+//- (IBAction)getData:(id)sender;
 @end
 

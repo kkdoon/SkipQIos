@@ -10,15 +10,22 @@
 #import "ProductDetailsController.h"
 #import "WalmartProductModel.h"
 #import "TrendingListViewController.h"
+#import "ESSBeaconScanner.h"
+#import "ESSEddyStone.h"
+#import "BeaconManager.h"
+#import "TrendingListViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <ESSBeaconScannerDelegate> {
+    //@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
+    ESSBeaconScanner *_scanner;
+}
 
 @end
-
 @implementation ViewController{
   WalmartProductModel *obj;
   NSMutableArray *trendingList;
 }
+static BOOL *isBeaconFound;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,7 +37,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)showAlert:(id)sender {
+/*- (IBAction)showAlert:(id)sender {
     UIAlertController * alert=   [UIAlertController
                                   alertControllerWithTitle:@"Deal of Day"
                                   message:@"Are you interested in exploring deals of day in Electronics section?"
@@ -55,9 +62,9 @@
     [alert addAction:ok];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
-}
+}*/
 
-- (IBAction)getTrendingData:(id)sender {
+/*- (IBAction)getTrendingData:(id)sender {
     // Send asynchronous request
     NSString *url = @"http://api.walmartlabs.com/v1/trends?format=json&apiKey=29848w8q74kj8q5c54rbkqna";
 
@@ -79,7 +86,7 @@
                     row = [[WalmartProductModel alloc] initWithParams:item[@"name"]:item[@"salePrice"]:item[@"msrp"]:item[@"customerRating"]:item[@"largeImage"]];
                     [trendingList addObject:row];
                 }
-                /*NSLog(@"item: %@, price: %@, msrp: %@, rating: %@, imageUrl: %@", obj.productName, obj.price, obj.msrp, obj.rating, obj.imageUrl);*/
+                //NSLog(@"item: %@, price: %@, msrp: %@, rating: %@, imageUrl: %@", obj.productName, obj.price, obj.msrp, obj.rating, obj.imageUrl);
             }
             for(WalmartProductModel *obj in trendingList){
                 NSLog(@"Row: item: %@, price: %@, msrp: %@, rating: %@, imageUrl: %@", obj.productName, obj.price, obj.msrp, obj.rating, obj.imageUrl);
@@ -87,85 +94,107 @@
         }
     }];
     [dataTask resume];
-}
+}*/
 
-- (IBAction)getData:(id)sender {
-    NSString *upcCode = _labelUic.text;
-    // Send asynchronous request
-    NSString *url =  [NSString stringWithFormat:@"%@%@", @"http://api.walmartlabs.com/v1/items?apiKey=29848w8q74kj8q5c54rbkqna&upc=", upcCode];
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error == nil)
-        {
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-            long httpStatusCode = (long)[httpResponse statusCode];
-            NSLog(@"response status code: %ld", httpStatusCode);
-            if(httpStatusCode == 200){
-            // do stuff
-            NSMutableDictionary *allData = [ NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error]; //data in serialized view
-            NSArray* itemList = allData[@"items"];
-            
-            for (NSDictionary* item in itemList)
-            {
-                obj = [[WalmartProductModel alloc] initWithParams:item[@"name"]:item[@"salePrice"]:item[@"customerRating"]:item[@"largeImage"]];
-                NSLog(@"item: %@, price: %@, rating: %@, imageUrl: %@", obj.productName, obj.price, obj.rating, obj.imageUrl);
-                break;
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if ([[NSThread currentThread] isMainThread]){
-                    NSLog(@"In main thread--completion handler");
-                    [self performSegueWithIdentifier:@"showProductInfo" sender:self];
-                }
-                else{
-                    NSLog(@"Not in main thread--completion handler");
-                }
-            });
-            }else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if ([[NSThread currentThread] isMainThread]){
-                        NSLog(@"In main thread--completion handler");
-                        [self showHttpErrorMsg];
-                    }
-                    else{
-                        NSLog(@"Not in main thread--completion handler");
-                    }
-                });
-            }
-        }else{
-            NSLog(@"Error");
-        }
-    }];
-    
-    [dataTask resume];
-}
-
--(void)showHttpErrorMsg {
-    UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"UIC Code Not Found"
-                                  message:@"Are you using correct UIC Code. Please check and try again."
-                                  preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"OK"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             [alert dismissViewControllerAnimated:YES completion:nil];
-                             
-                         }];
-    [alert addAction:ok];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+/*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showProductInfo"]) {
         ProductDetailsController *destViewController = segue.destinationViewController;
         destViewController.obj = [[WalmartProductModel alloc] initWithParams:obj.productName:obj.price:obj.rating:obj.imageUrl];
     }else if ([segue.identifier isEqualToString:@"trendingTable"]) {
         TrendingListViewController *destViewController = segue.destinationViewController;
         destViewController.trendingList = trendingList;
+    }
+}*/
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    _scanner = [[ESSBeaconScanner alloc] init];
+    _scanner.delegate = self;
+    if(!isBeaconFound){
+        [_scanner startScanning];
+    }else{
+        NSLog(@"Beacon already notified!");
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    //    [_scanner stopScanning];
+    //    _scanner = nil;
+}
+
+- (void)beaconScanner:(ESSBeaconScanner *)scanner
+        didFindBeacon:(id)beaconInfo {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //NSLog(@"I Saw an Eddystone!: %@", beaconInfo);
+        //[NSThread sleepForTimeInterval:5.0f];
+    });
+}
+
+- (void)beaconScanner:(ESSBeaconScanner *)scanner didUpdateBeacon:(id)beaconInfo {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //NSLog(@"I Updated an Eddystone!: %@", beaconInfo);
+        ESSBeaconInfo *b= (ESSBeaconInfo *) beaconInfo;
+        double dist = [self calculateDistance:[b.txPower intValue]:[b.RSSI doubleValue]];
+        NSLog(@"Distance :%@", @(dist).stringValue);
+        if(dist <= 5){
+            if (self.isViewLoaded && self.view.window) {
+            NSLog(@"View Controller Found!!!!!");
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@"Deal of Day"
+                                          message:@"Are you interested in exploring deals of day in Electronics section?"
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     [self performSegueWithIdentifier:@"mainToTrendingPage" sender:self];
+                                     NSLog(@"Done");
+                                 }];
+            UIAlertAction* cancel = [UIAlertAction
+                                     actionWithTitle:@"Cancel"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         NSLog(@"No");
+                                         
+                                     }];
+            [alert addAction:ok];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            }
+            BeaconManager *manager = [BeaconManager getInstance];
+            [manager invokeBeaconFound];
+            isBeaconFound = TRUE;
+            [_scanner stopScanning];
+            _scanner = nil;
+        }
+        //[NSThread sleepForTimeInterval:5.0f];
+    });
+}
+
+- (void)beaconScanner:(ESSBeaconScanner *)scanner didFindURL:(NSURL *)url {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"I Saw a URL!: %@", url);
+        //[NSThread sleepForTimeInterval:5.0f];
+    });
+}
+
+-(double) calculateDistance:(int)txPower:(double)rssi {
+    if (rssi == 0) {
+        return -1.0; // if we cannot determine distance, return -1.
+    }
+    
+    int pathLoss = txPower - rssi;
+    return pow(10, (pathLoss - 41) / 20.0);
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"mainToTrendingPage"]) {
+        TrendingListViewController *destViewController = segue.destinationViewController;
     }
 }
 @end

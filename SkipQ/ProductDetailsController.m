@@ -10,6 +10,7 @@
 #import "ProductDetailsController.h"
 #import "WalmartProductModel.h"
 #import "ReviewViewController.h"
+#import "BeaconManager.h"
 
 @interface ProductDetailsController ()
 
@@ -17,6 +18,38 @@
 
 @implementation ProductDetailsController
 NSMutableArray *productList;
+
+
+- (void)beaconFound{
+    if (self.isViewLoaded && self.view.window) {
+    NSLog(@"ProductDetailsController: Beacon detected!");
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Deal of Day"
+                                  message:@"Are you interested in exploring deals of day in Electronics section?"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                             [self performSegueWithIdentifier:@"fromProductToTrending" sender:self];
+                             NSLog(@"Done");
+                         }];
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 NSLog(@"No");
+                                 
+                             }];
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+    }
+}
 
 - (NSManagedObjectContext *)managedObjectContext {
     NSManagedObjectContext *context = nil;
@@ -29,6 +62,30 @@ NSMutableArray *productList;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    BeaconManager *manager = [BeaconManager getInstance];
+    [manager initWithDelegate:self];
+    
+    if(_isDeal){
+        _labelDeal.hidden = false;
+        FBSDKShareButton *button = [[FBSDKShareButton alloc] init];
+        button.frame = CGRectMake(110, 532, 90, 30);
+        [self.view addSubview:button];
+        FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+        content.contentURL = [NSURL URLWithString:_obj.productUrl];
+        [content setImageURL:[NSURL URLWithString:_obj.imageUrl]];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMaximumFractionDigits:2];
+        [formatter setRoundingMode: NSNumberFormatterRoundDown];
+        if(_savings > 0){
+            NSString *savingString = [formatter stringFromNumber:[NSNumber numberWithDouble:_savings]];
+            [content setContentTitle:[NSString stringWithFormat:@"Save %@%%! Walmart Deal of the Day", savingString]];
+        }else{
+            [content setContentTitle:@"Walmart Deal of the Day"];
+        }
+        [content setContentDescription:[NSString stringWithFormat:@"%@", _obj.productName]];
+        button.shareContent = content;
+    }
+    
     /*Fetch data from CoreData
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"CheckoutProduct"];
@@ -51,6 +108,7 @@ NSMutableArray *productList;
             NSLog(@"%@",connectionError);
         }
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,6 +145,13 @@ NSMutableArray *productList;
         [product setValue:quantityNum forKey:@"quantity"];
         if (![context save:&error]) {
             NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Added"
+                                                            message:@"Product successfully added to cart"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
         }
     } else{
         // Create a new managed object
@@ -131,10 +196,11 @@ NSMutableArray *productList;
            [_loadingBar startAnimating];
            [self manageButtonDisplay:false];
        });
+    NSLog(@"UPC Code: %@", _upcCode);
     NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc]
                                         initWithURL:[NSURL
                                                      URLWithString:@"https://api.priceapi.com/jobs"]];
-    NSString *params = @"token=BXGAKTHWCVOZYKIYRMZTYTSSWIPKOBLEKHYOBOJMNURLCIJFOWRSXATGDTXFJCCR&country=us&source=google-shopping&currentness=daily_updated&completeness=one_page&key=gtin&values=0077043608067";
+    NSString *params = [NSString stringWithFormat: @"token=BXGAKTHWCVOZYKIYRMZTYTSSWIPKOBLEKHYOBOJMNURLCIJFOWRSXATGDTXFJCCR&country=us&source=google-shopping&currentness=daily_updated&completeness=one_page&key=gtin&values=0%@", _upcCode];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding]];
     NSURLResponse * response = nil;
@@ -195,12 +261,23 @@ NSMutableArray *productList;
                     NSArray *googleProducts = allData[@"products"];
                     if([googleProducts count] > 0){
                         NSDictionary* item = googleProducts[0];
+                        BOOL *statusResult = [item[@"success"] boolValue];
+                        if(statusResult == false){
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [_loadingBar stopAnimating];
+                                [self manageButtonDisplay:true];
+                                [self showHttpErrorMsg];
+                            });
+                            return;
+                        }
+                        NSString *prodName = item[@"name"];
+                        NSLog(@"Product compared: %@", prodName);
                         NSArray *offers = item[@"offers"];
                         //NSMutableArray *offerList = [[NSMutableArray alloc] initWithObjects:nil];
                         NSString *offerFinalList = @"";
                         for (NSDictionary* offer in offers)
                         {
-                            NSString *offerData = [NSString stringWithFormat:@"shop_name: %@ \t price: %@", offer[@"shop_name"], offer[@"price"]];
+                            NSString *offerData = [NSString stringWithFormat:@"Shop Name: %@ \t Price: %@", offer[@"shop_name"], offer[@"price"]];
                             //[offerList addObject:offerData];
                             if(![offerData containsString:@"Walmart"]){
                                 offerFinalList = [offerFinalList stringByAppendingString: [NSString stringWithFormat:@"%@\n", offerData]];
@@ -240,6 +317,16 @@ NSMutableArray *productList;
   });
 }
 
+- (IBAction)backButton:(id)sender {
+    NSLog(@"Back!");
+    //[self.navigationController popViewControllerAnimated:true];
+    if(_isDeal){
+        [self performSegueWithIdentifier:@"fromProductToTrending" sender:self];
+    }else{
+        [self performSegueWithIdentifier:@"fromProductToMain" sender:self];
+    }
+}
+
 -(void)manageButtonDisplay:(bool)val{
     _btnBack.enabled = val;
     _btnCart.enabled = val;
@@ -259,13 +346,37 @@ NSMutableArray *productList;
     [alert show];
 }
 
+-(void)showHttpErrorMsg {
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Product Not Found"
+                                  message:@"Are you using correct UPC Code. Please check and try again."
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                             [self performSegueWithIdentifier:@"backToMainPage" sender:self];
+                         }];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"reviewCart"]) {
+    /*if ([segue.identifier isEqualToString:@"reviewCart"]) {
         ReviewViewController *destViewController = segue.destinationViewController;
         //destViewController.productList = productList;
         NSLog(@"%s","Sent!");
-    }
+    }else if ([segue.identifier isEqualToString:@"fromProductToTrending"]) {
+        
+    }else if ([segue.identifier isEqualToString:@"fromProductToMain"]) {
+        
+    }*/
 }
 
+-(IBAction)backToPrevScreenSugue:(UIStoryboardSegue *)segue{
+    
+}
 
 @end

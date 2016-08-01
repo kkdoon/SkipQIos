@@ -14,6 +14,8 @@
 @property (nonatomic) NSString *imageUrl;
 @property (nonatomic) NSNumber *msrp;
 @property (nonatomic) NSNumber *quantity;
+@property (nonatomic) NSString *productUrl;
+@property (nonatomic) NSString *upcCode;
 
  -(id)initWithParams:(NSString *)productName :(NSNumber *)price :(NSNumber *)rating :(NSString *)imageUrl;
 - (id)initWithParams:(NSString *)productName :(NSNumber *)price :(NSNumber *)msrp :(NSNumber *)rating :(NSString *)imageUrl;

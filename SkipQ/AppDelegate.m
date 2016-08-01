@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "FBSDKShareKit/FBSDKShareKit.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     return YES;
+    /*return [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];*/
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -87,4 +91,9 @@
 - (NSString *)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
+
+/*- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)
+    sourceApplication annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+}*/
 @end

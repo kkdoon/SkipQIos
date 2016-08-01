@@ -23,11 +23,13 @@
     
     UIView *_highlightView;
     UILabel *_label;
+    UIButton *_backBtn;
 }
 @end
 
 @implementation ScanController {
     WalmartProductModel *obj;
+    NSString *upcCode;
 }
 
 - (void)viewDidLoad
@@ -49,6 +51,10 @@
     _label.text = @"(none)";
     [self.view addSubview:_label];
     
+    /*_backBtn = [[UIButton alloc]init];
+    _backBtn.frame = CGRectMake(0, 0, self.view.bounds.size.width, 40);
+    [_backBtn setTitle:@"Back" forState:UIControlStateNormal];
+    [self.view addSubview:_backBtn];*/
     
     _session = [[AVCaptureSession alloc] init];
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -76,6 +82,7 @@
     
     [self.view bringSubviewToFront:_highlightView];
     [self.view bringSubviewToFront:_label];
+    [self.view bringSubviewToFront:_backButton];
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
@@ -101,7 +108,7 @@
         if (detectionString != nil)
         {
             _label.text = detectionString;
-            NSString *upcCode = [_label.text substringFromIndex:1];
+            upcCode = [_label.text substringFromIndex:1];
             NSLog(@"UPC Code: %@", upcCode);
             _highlightView.frame = highlightViewRect;
             // Send asynchronous request
@@ -122,7 +129,7 @@
                         
                         for (NSDictionary* item in itemList)
                         {
-                            obj = [[WalmartProductModel alloc] initWithParams:item[@"name"]:item[@"salePrice"]:item[@"customerRating"]:item[@"largeImage"]];
+                            obj = [[WalmartProductModel alloc] initWithParams:item[@"name"]:item[@"salePrice"]:item[@"customerRating"]:item[@"largeImage"]];                            
                             NSLog(@"item: %@, price: %@, rating: %@, imageUrl: %@", obj.productName, obj.price, obj.rating, obj.imageUrl);
                             break;
                         }
@@ -169,8 +176,8 @@
 
 -(void)showHttpErrorMsg {
     UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"UIC Code Not Found"
-                                  message:@"Are you using correct UIC Code. Please check and try again."
+                                  alertControllerWithTitle:@"Product Not Found"
+                                  message:@"Are you using correct UPC Code. Please check and try again."
                                   preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* ok = [UIAlertAction
                          actionWithTitle:@"OK"
@@ -188,6 +195,7 @@
     if ([segue.identifier isEqualToString:@"showProduct"]) {
         ProductDetailsController *destViewController = segue.destinationViewController;
         destViewController.obj = [[WalmartProductModel alloc] initWithParams:obj.productName:obj.price:obj.rating:obj.imageUrl];
+        destViewController.upcCode = upcCode;
     }else if([segue.identifier isEqualToString:@"backToMainPage"]){
         ViewController *destViewController = segue.destinationViewController;
     }

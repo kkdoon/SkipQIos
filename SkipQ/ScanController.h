@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ScanController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @end
 

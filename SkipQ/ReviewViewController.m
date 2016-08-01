@@ -50,7 +50,11 @@ ReviewCellViewController *selectedCell;
         totalQuantity += quantity;
     }
     _labelItemCount.text = @(totalQuantity).stringValue;
-    _labelTotalPrice.text = [NSString stringWithFormat:@"$%@", @(totalPrice).stringValue];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setMaximumFractionDigits:2];
+    [formatter setRoundingMode: NSNumberFormatterRoundDown];
+    NSString *totalPriceString = [formatter stringFromNumber:[NSNumber numberWithDouble:totalPrice]];
+    _labelTotalPrice.text = [NSString stringWithFormat:@"$%@", totalPriceString];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -145,7 +149,11 @@ ReviewCellViewController *selectedCell;
     //double price = [selCell.labelPrice.text doubleValue];
     double price = [[[selCell.labelPrice.text componentsSeparatedByString:@"$"] objectAtIndex:1] doubleValue];
     double totalPrice = price * quantity;
-    selCell.labelTotalPrice.text = [NSString stringWithFormat:@"$%@",@(totalPrice).stringValue];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setMaximumFractionDigits:2];
+    [formatter setRoundingMode: NSNumberFormatterRoundDown];
+    NSString *totalPriceString = [formatter stringFromNumber:[NSNumber numberWithDouble:totalPrice]];
+    selCell.labelTotalPrice.text = [NSString stringWithFormat:@"$%@",totalPriceString];
     NSLog(@"Total Price: %@, price: %@, quantity; %@", @(totalPrice).stringValue, @(price).stringValue, @(quantity).stringValue);
     NSManagedObjectContext *context = [self managedObjectContext];
     NSManagedObject *product = [_productList objectAtIndex:b.tag];
